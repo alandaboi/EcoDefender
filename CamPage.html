@@ -57,7 +57,6 @@
     <link rel="icon" type="image/png"  href="img/favicon-96x96.png">
     <script src="https://unpkg.com/@tensorflow/tfjs"></script>
     <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 </head>
 
 <body>
@@ -774,23 +773,25 @@
     
 
     <td aligh="left">
-        <button id="predictValue" onclick="app()">Predict</button>
+        <button id="predictValue" onclick="app()">Classify</button>
     </td>
     <script>
-        let model;
+        let net;
 
         async function app() {
 
   console.log('Loading mobilenet..');
 
   // Load the model.
-  model = await tmImage.load('assets/model.json', 'assets/metadeta.json');
+  net = await mobilenet.load();
   console.log('Sucessfully loaded model');
 
   // Make a prediction through the model on our image.
   const imgEl = document.getElementById('photo');
-  const prediction = await model.predict(imgEl);
-  console.log(prediction);
+  const result = await net.classify(imgEl);
+  console.log(result);
+
+  alert("Please check console for data output");
 
 }
     </script>
