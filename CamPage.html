@@ -49,7 +49,12 @@
         text-align: center;
     }
     </style>
-    <title>My Favorite Sport</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>EcoDefender</title>
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"> 
+    <link rel="shortcut icon" type="image/png"  href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png"  href="img/favicon-96x96.png">
 </head>
 
 <body>
@@ -154,9 +159,6 @@
     </script>
 </body>
 <html lang="en" class="js"><head>
-    <meta charset="utf-8">
-    <title>Drag and Drop File Uploading</title>
-    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="main.css">
     <style id="" media="all">/* cyrillic-ext */
@@ -586,6 +588,7 @@
     
         ;( function ( document, window, index )
         {
+            var photo = document.getElementById('photo');
             // feature detection for drag&drop upload
             var isAdvancedUpload = function()
                 {
@@ -663,6 +666,7 @@
                     form.addEventListener( 'drop', function( e )
                     {
                         droppedFiles = e.dataTransfer.files; // the files that were dropped
+                        photo.setAttribute('src', droppedFiles[0]);
                         showFiles( droppedFiles );
     
                         
