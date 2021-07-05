@@ -55,6 +55,8 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible"> 
     <link rel="shortcut icon" type="image/png"  href="img/favicon-96x96.png">
     <link rel="icon" type="image/png"  href="img/favicon-96x96.png">
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
 </head>
 
 <body>
@@ -70,7 +72,7 @@
         </div>
         <canvas id="canvas"></canvas>
         <div class="output">
-            <img id="photo" alt="The screen capture will appear in this box.">
+            <img id="photo" src="img/plant.jpg">
         </div>
     </div>
 
@@ -127,7 +129,7 @@
                 ev.preventDefault();
             }, false);
 
-            clearphoto();
+            
         }
 
 
@@ -666,7 +668,6 @@
                     form.addEventListener( 'drop', function( e )
                     {
                         droppedFiles = e.dataTransfer.files; // the files that were dropped
-                        photo.setAttribute('src', droppedFiles[0]);
                         showFiles( droppedFiles );
     
                         
@@ -770,5 +771,30 @@
     </script>
     <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;669f50b73fdb2f40&quot;,&quot;token&quot;:&quot;2863ac31b15c48f5b94bd8b0c38aba94&quot;,&quot;version&quot;:&quot;2021.6.0&quot;,&quot;si&quot;:10}"></script>
     
+
+    <td aligh="left">
+        <button id="predictValue" onclick="app()">Predict</button>
+    </td>
+    <script>
+        let net;
+
+        async function app() {
+
+  console.log('Loading mobilenet..');
+
+  // Load the model.
+  net = await mobilenet.load();
+  console.log('Sucessfully loaded model');
+
+  // Make a prediction through the model on our image.
+  const imgEl = document.getElementById('photo');
+  const result = await net.classify(imgEl);
+  console.log(result);
+
+  alert("Prediction successful!");
+
+}
+    </script>
+
     </body></html>
 </html>
