@@ -1,14 +1,48 @@
-<html>
-  <head>
-    <!-- Load the latest version of TensorFlow.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
-  </head>
-  <body>
-    <div id="console"></div>
-    <!-- Add an image that we will use to test -->
-    <img id="img" crossorigin src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227"/>
-    <!-- Load index.js after the content of the page -->
-    <script src="assets/tf.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
+</head>
+
+<body>
+    <main role="main" class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <div class="progress progress-bar progress-bar-striped progress-bar-animated mb-2">
+            Loading Model
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <input id="image-selector" class="form-control border-0" type="file" />
+        </div>
+        <div class="col-6">
+          <button id="predictBtn" class="btn btn-primary float-right">
+            Predict
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-6">
+          <h2 class="ml-3">Image</h2>
+          <img id="selected-image" class="ml-3" width="250" alt="" />
+        </div>
+        <div class="col-6">
+          <h2 class="ml-3">Predictions</h2>
+          <ol id="prediction-list"></ol>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <script src="assets/tf.js"></script>
+</body>
+
 </html>
